@@ -206,7 +206,7 @@ def collect_env(prefix, env=None):
             try:
                 d[varname] = ast.literal_eval(value)
             except (SyntaxError, ValueError):
-                d[varname] = value
+                d[varname] = value.split(':') if ':' in value else value
 
     result = {}
     # fake thread lock to use set functionality
